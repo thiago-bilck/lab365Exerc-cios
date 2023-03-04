@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var student = [
+        {
+          name: "Armando",
+          score: 8,
+          grade: 5,
+          age: 11,
+          address: "Rua do Joao de Barro, 13.",
+          math: 8.5,
+        },
+        {
+          name: "Tainá",
+          score: 10,
+          grade: 5,
+          age: 10,
+          address: "Servidão Guarapuvu, 234",
+          math: 10,
+        },
+        {
+          name: "Catarina",
+          score: 9,
+          grade: 5,
+          age: 11,
+          address: "Rua das Canelas, 1500",
+          math: 7.5,
+        },
+        {
+          name: "Francisco",
+          score: 7,
+          grade: 5,
+          age: 10,
+          address: "Rua das Onças, 67",
+          math: 9,
+        },
+        {
+          name: "Maria Flor",
+          score: 8,
+          grade: 5,
+          age: 11,
+          address: "Servidão das Gabirobas, 89",
+          math: 8.7,
+        },
+      ];
+
+      console.log(student);
+
+      var mathAverage =
+        (student[0].math +
+          student[1].math +
+          student[2].math +
+          student[3].math +
+          student[4].math) /
+        5;
+      console.log("A media de notas de matemática da turma é " + mathAverage);
+
+      if (student[0].math >= 7) {
+        console.log(
+          "O(a) aluno(a) " +
+            student[0].name +
+            " obteve média " +
+            student[0].math +
+            " e está aprovado(a)!"
+        );
+      } else {
+        console.log(
+          "O(a) aluno(a) " +
+            student[0].name +
+            " obteve média " +
+            student[0].math +
+            " e está reprovado(a)!"
+        );
+      }
+
+      if (student[1].math >= 7) {
+        console.log(
+          "O(a) aluno(a) " +
+            student[1].name +
+            " obteve média " +
+            student[1].math +
+            " e está aprovado(a)!"
+        );
+      } else {
+        console.log(
+          "O(a) aluno(a) " +
+            student[1].name +
+            " obteve média " +
+            student[1].math +
+            " e está reprovado(a)!"
+        );
+      }
+
+      if (student[2].math >= 7) {
+        console.log(
+          "O(a) aluno(a) " +
+            student[2].name +
+            " obteve média " +
+            student[2].math +
+            " e está aprovado(a)!"
+        );
+      } else {
+        console.log(
+          "O aluno(a) " +
+            student[2].name +
+            " obteve média " +
+            student[2].math +
+            " e está reprovado(a)!"
+        );
+      }
+
+      if (student[3].math >= 7) {
+        console.log(
+          "O(a) aluno(a) " +
+            student[3].name +
+            " obteve média " +
+            student[3].math +
+            " e está aprovado(a)!"
+        );
+      } else {
+        console.log(
+          "O(a) aluno(a) " +
+            student[3].name +
+            " obteve média " +
+            student[3].math +
+            " e está reprovado(a)!"
+        );
+      }
+    </script>
+  </body>
+</html>
