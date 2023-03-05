@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[M01S05]Ex1</title>
+</head>
+<body>
+  <script>
+  const list = ['Pedro', 'José', 'Aderbal', 'Danilo', 'Luisa', 'Vitoria', 'Luis', 'Danilo', 'José'];
+
+  list.forEach((name,index)=> {
+    console.log('index: '+ index + ' Name: ' + name)
+  })
+
+  const newList = new Set(list);
+  console.log("Lista sem nomes repetidos: ", newList)
+
+  const filtered = list.filter((name,index) => list.indexOf(name) !== index);
+  console.log("Nomes repetidos encontrados:", filtered)
+
+  const repetead1 = filtered.pop();
+  const repetead2 =filtered.pop();
+
+  console.log(repetead1," , ", repetead2, " , ", newList);
+
+  
+
+
+    
+
+    
+// O código abaixo foi construído com a ajuda do ChatGPT, mas julguei melhor deixar o código feito com
+//meu raciocínio próprio neste momento  
+/*const nomes = ['Pedro', 'José', 'Aderbal', 'Danilo', 'Luisa', 'Vitoria', 'Luis', 'Danilo', 'José'];
+
+const nomesUnicos = [...new Set(nomes)];
+
+const nomesDuplicados = nomes.filter((nome, index) => nomes.indexOf(nome) !== index);
+
+nomesDuplicados.forEach((nome) => {
+  console.log(`${nome} foi removido`);
+});
+
+console.log(nomesUnicos);*/
+
+
+  </script>
+</body>
+</html>
