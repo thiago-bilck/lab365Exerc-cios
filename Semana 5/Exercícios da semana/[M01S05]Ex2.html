@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[M01S05]Ex2</title>
+</head>
+<body>
+  <script>
+    /*Dada a seguinte lista, de forma decrescente, retorne os dados das 2 listas de forma agrupada,
+     pela seguinte ordem. 
+     usuarios - Crescente: ['Pedro', ‘José', ‘Aderbal', ‘Danilo', 'Luisa', 'Vitoria']
+    frutas - Descrescente:[ “Banana”, “Morango”, “Maçã”, “Uva”, “Pêra” , “Laranja“]
+
+Resultado esperado: 
+['Pedro - Laranja', ‘José - Pêra’, 'Aderbal - Uva', 'Danilo - Maçã', 'Luisa - Morango', 'Vitoria - Banana' ]
+*/
+const names = ['Pedro', 'José', 'Aderbal', 'Danilo', 'Luisa', 'Vitoria']
+const fruits = ['Banana', 'Morango', 'Maçã', 'Uva', 'Pêra' , 'Laranja'];
+
+const fruitsReverse = fruits.reverse();
+//console.log(fruitsReverse)
+
+const mergeNamesFruits = [];
+
+for (let i=0; i<names.length; i++){
+  mergeNamesFruits.push(`${names[i]} - ${fruitsReverse[i]}`)
+  }
+  console.log(mergeNamesFruits); 
+
+  </script>
+</body>
+</html>
