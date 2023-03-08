@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semana 5 - Exercício 4</title>
+  </head>
+  <body>
+    <script>
+      /* Retornar uma lista separada pelos usuários com idades menores de 18 e outra com os usuários
+       maiores ou iguais a 18.
+       */
+            const list = [
+              { nome: "luis", idade: 26 },
+              { nome: "norma", idade: 16 },
+              { nome: "daiana", idade: 26 },
+              { nome: "jorge", idade: 16 },
+              { nome: "kauan", idade: 16 },
+              { nome: "charles", idade: 26 },
+              { nome: "marco", idade: 16 },
+              { nome: "bruno", idade: 16 },
+            ];
+
+            function above18(person){
+              return list.filter(person => person.idade>=18)
+            }
+            
+            function under18(person){
+              return list.filter(person => person.idade<18)
+            }
+
+            const moreThan18 = above18()
+            console.log(moreThan18)
+
+            const lessThan18 = under18()
+            console.log(lessThan18);
+            
+    </script>
+  </body>
+</html>
