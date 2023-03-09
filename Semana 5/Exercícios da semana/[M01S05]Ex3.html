@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 3 / Semana 5</title>
+  </head>
+  <body>
+    <script>
+      /* Utilizando a lista: ['Pedro', ‘José', ‘Aderbal', ‘Danilo', 'Luisa', 'Vitoria']
+Através de lógica de programação, adicione um ou mais nomes na lista, porém não é possível receber
+um nome igual.
+Regra 1: É necessário enviar um ou mais nomes;
+Regra 2: Caso um ou mais nomes já exista na lista retorne uma mensagem de erro;
+Regra 3: Se entre os nomes enviados, receber um valor diferente de uma string, retornar uma mensagem
+de erro;
+Regra 4: Caso se enquadre, nas primeiras 3 regras, retornar um log da nova lista com os nomes 
+adicionados junto aos anteriores
+ */
+
+      const originalList = [
+        "Pedro",
+        "José",
+        "Aderbal",
+        "Danilo",
+        "Luisa",
+        "Vitoria",
+      ];
+      //console.log(originalList);
+      let input = window.prompt(
+        "Insira um ou mais nomes (separe os nomes por vírgula): "
+      );
+      let names = input.split(",");
+
+      for (let i = 0; i < names.length; i++) {
+        let newName = names[i].trim();
+        if (isNaN(newName)) {
+          if (originalList.includes(newName)) {
+            alert(
+              "Erro! Este nome já existem na posição " +
+                originalList.indexOf(newName) +
+                " da lista."
+            );
+          } else {
+            originalList.push(newName);
+            console.log(originalList);
+          }
+        } else {
+          alert("Erro! Insira apenas nomes. Tente novamente.");
+        }
+      }
+    </script>
+  </body>
+</html>
