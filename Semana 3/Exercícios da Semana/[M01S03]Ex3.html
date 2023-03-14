@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semana 3 - Exercício 3 - To Do List</title>
+  </head>
+  <body>
+    <script>
+      /* Faça uma lista de tarefas diárias (strings), e crie 4 funções diferentes.
+Função que busca se a tarefa existe na lista.
+Função que altera um item da lista.
+Função que deleta um item da lista
+Função que adiciona um item na lista
+ */
+      let tasks = [
+        "estudar",
+        "arrumar casa",
+        "consertar chuveiro",
+        "capinar quintal",
+      ];
+
+      let choose = prompt(
+        "O que você quer fazer?\n-Digite 1 para buscar uma tarefa. \n-Digite 2 para alterar um item da lista. \n-Digite 3 para deletar um item da lista.\n-Digite 4 para adicionar um item na lista."
+      );
+
+      switch (choose) {
+        case "1":
+          let choose1 = prompt("Qual tarefa você deseja buscar?");
+          let choose1ToLowerCase = choose1.toLowerCase();
+          if (tasks.includes(choose1ToLowerCase)) {
+            alert(
+              "A tarefa (" +
+                choose1ToLowerCase +
+                ") foi encontrada e está na posição:" +
+                tasks.indexOf(choose1ToLowerCase)
+            );
+          } else {
+            alert("Esta tarefa não consta em sua lista.");
+          }
+
+          break;
+
+        case "2":
+          let choose2 = prompt("Qual tarefa você deseja alterar?");
+          let choose2ToLowerCase = choose2.toLowerCase();
+          if (tasks.includes(choose2ToLowerCase)) {
+            let taskIndex = tasks.indexOf(choose2ToLowerCase);
+            tasks[taskIndex] = prompt("Informe a nova tarefa:");
+            console.log(tasks);
+          } else {
+            alert("Esta tarefa não consta em sua lista.");
+          }
+
+          break;
+        case "3":
+          let choose3 = prompt("Qual tarefa você deseja excluir?");
+          let choose3ToLowerCase = choose3.toLowerCase();
+          if (tasks.includes(choose3ToLowerCase)) {
+            let taskIndex = tasks.indexOf(choose3ToLowerCase);
+            tasks.splice(taskIndex, 1);
+            console.log(tasks);
+          } else {
+            alert("Esta tarefa não consta em sua lista.");
+          }
+          break;
+        case "4":
+          let choose4 = prompt("Qual tarefa você deseja incluir?");
+          let choose4ToLowerCase = choose4.toLowerCase();
+          tasks.push(choose4ToLowerCase);
+          console.log(tasks);
+          break;
+      }
+    </script>
+  </body>
+</html>
