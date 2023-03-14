@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+/* Use uma sintaxe que chama uma função em intervalos de tempo definidos e faça ela 
+verificar se chegou uma data, se essa data chegou, ela deve imprimir feliz aniversário.
+ Se não chegou, ela deve dizer quantos dias faltam para chegar a data.
+Para facilitar o cálculo de dias, pode se basear no algorítimo abaixo.
+const d1  = '2021-10-05';
+const d2    = '2021-11-12';
+const diffInMs   = new Date(d2) - new Date(d1)
+const diffInDays = diffInMs / (1000  60  60 * 24);
+console.log(diffInDays) // 38 */
+    
+function calcDate(d2){
+      let d1 = new Date();
+      const diffInMs   = new Date(d2) - d1
+      const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+      if (diffInDays>0){
+        alert("Faltam " + diffInDays + " dias para o aniversário.")
+      }
+      else if (diffInDays==0){
+        alert("Parabéns, hoje é seu aniversário");
+      }
+      else{
+        alert("O aniversário foi há " + diffInDays + " dias");
+      }
+
+    }
+const birthday = prompt("Informe o dia do aniversário (yyyy-mm-dd):");
+
+setInterval(() => calcDate(birthday), 5000);
+
+
+  </script>
+  
+</body>
+</html>
