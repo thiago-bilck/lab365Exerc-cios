@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e 
+agora possui uma loja de conveniências. Faça um programa que implemente uma caixa
+ registradora rudimentar. O programa deverá receber um número desconhecido de valores 
+ referentes aos preços das mercadorias. Um valor zero deve ser informado pelo operador 
+ para indicar o final da compra. O programa deve então mostrar o total da compra e 
+ perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar o
+  valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, 
+  para registrar a próxima compra. A saída deve ser conforme o exemplo abaixo:
+Lojas Tabajara
+Produto 1: R$ 2.20
+Produto 2: R$ 5.80
+Produto 3: R$ 0
+Total: R$ 9.00
+Dinheiro: R$ 20.00
+Troco: R$ 11.00
+...
+ */
+      while (true) {
+        let productsList = [];
+        let product;
+
+        while (true) {
+          product = Number(prompt("Insira o valor do produto:"));
+          if (product === 0) {
+            break;
+          }
+          productsList.push(product);
+        }
+        let message = "";
+        productsList.forEach((produto, index) => {
+          message += `Produto ${index + 1}: R$ ${produto}\n`;
+        });
+
+        let total = productsList.reduce(
+          (acumulador, atual) => acumulador + atual,
+          0
+        );
+        message += `\nTotal: ${total}`;
+
+        alert(message);
+
+        let pay = prompt(
+          "Informe o valor apresentado pelo cliente para pagamento:"
+        );
+        if (pay - total < 0) {
+          alert("Valor insuficiente. Mande lavar pratos");
+        } else {
+          let change = pay - total;
+
+          message += `\nTroco: R$ ${change}`;
+          alert(message);
+        }
+      }
+    </script>
+  </body>
+</html>
