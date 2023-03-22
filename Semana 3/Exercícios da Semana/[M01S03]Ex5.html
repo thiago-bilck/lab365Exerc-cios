@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados do GitHub</title>
+</head>
+<body>
+  <form action="submit" id="form">
+    <legend>Seus dados do GitHub</legend>
+    <fieldset>
+      <input
+        id="login"
+        type="text"
+        placeholder="login"
+        style="
+          display: flex;
+          flex-direction: column;
+          max-width: 100px;
+          border-radius: 10px;
+          margin: 10px;
+        "
+      />
+      <input
+        id="url"
+        type="text"
+        placeholder="url"
+        style="
+          display: flex;
+          flex-direction: column;
+          max-width: 100px;
+          border-radius: 10px;
+          margin: 10px;
+        "
+      />
+          
+          <input
+            id="name"
+            type="text"
+            placeholder="nome"
+            style="
+              display: flex;
+              flex-direction: column;
+              max-width: 100px;
+              border-radius: 10px;
+              margin: 10px;
+            "
+          />
+          <input
+          id="location"
+          type="text"
+          placeholder="localização"
+          style="
+            display: flex;
+            flex-direction: column;
+            max-width: 100px;
+            border-radius: 10px;
+            margin: 10px;
+          "
+        />
+        <input
+          id="blog"
+          type="text"
+          placeholder="email"
+          style="
+            display: flex;
+            flex-direction: column;
+            max-width: 100px;
+            border-radius: 10px;
+            margin: 10px;
+          "
+        />
+
+          </fieldset>
+  </form> 
+
+  <script>
+    /* let jsonData = fetch("https://api.github.com/users/thiago-bilck")
+    //let data = JSON.parse(jsonData)
+
+    jsonData
+    .then((data)=>{
+      return jsonData.json();
+    })
+    then.((res)=>console.log(jsonData)); */
+    
+
+    let loginInput = document.getElementById("login");
+    let urlInput = document.getElementById("url");
+    let nameInput = document.getElementById("name");
+    let locationInput = document.getElementById("location");
+    let blogInput = document.getElementById("blog");
+
+    async function searchData (){
+      try{
+        const data = await fetch("https://api.github.com/users/thiago-bilck")
+        const body = await data.json();
+        console.log(body)
+        loginInput.value = body.login
+        urlInput.value = body.url
+        nameInput.value = body.name
+        locationInput.value = body.location
+        blogInput.value = body.blog
+
+      } catch(e){
+
+      }finally{
+
+      }
+    }
+
+    searchData()
+
+
+
+
+   
+
+  </script>
+</body>
+</html>
