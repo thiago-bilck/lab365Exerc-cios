@@ -2,7 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 
-router.post("/user", (req,res)=>{
+router.post("/user", (req, res, next) => {
+    const {cargo} = req.body
+    if (cargo == "líder"){
+    console.log({"mensagem": "Seguindo para a próxima função"})
+    next();
+    }
+    else{
+        return res.json({"mensagem": "Cargo não permite prosseguir"})
+
+    }
+},(req,res)=>{
     
     const {nome, idade, cargo, senha} = req.body
    // res.send("Usuário criado")
