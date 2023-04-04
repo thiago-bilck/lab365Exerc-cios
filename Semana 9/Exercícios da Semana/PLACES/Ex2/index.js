@@ -31,7 +31,17 @@ app.post('/places', async (req,res) => {
     }
 })
 
+app.get('/places', async (req,res) => {
 
+    try {
+        const places = await Place.findAll();
+        return res.json(places);
+
+    } catch (error) {
+        res.status(500).json({message: 'Não foi possível concluir a operação'})
+    }
+
+})
 
 
 app.listen(9999, () => {
