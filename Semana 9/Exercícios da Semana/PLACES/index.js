@@ -2,6 +2,7 @@ const express = require('express');
 const connection = require('./src/database')
 const app = express();
 const Place = require("./src/models/place.js")
+const User = require('./src/models/user')
 
 app.use(express.json());//esta linha é obrigatória, pois ela que faz as trnsformações dos objetos para JSON.
 
@@ -105,6 +106,8 @@ app.delete('/places/:id', async (req,res) => {
     res.status(200).json({message: 'deletado com sucesso'})
 
 })
+
+
 
 
 app.listen(9999, () => {
