@@ -8,7 +8,7 @@ const User = connection.define('user', {
         primaryKey: true
     },
     name: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     },
     email: {
@@ -28,7 +28,7 @@ const User = connection.define('user', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            min: 8
+            len: [8]
         }
     }
 
