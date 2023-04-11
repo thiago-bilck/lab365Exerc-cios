@@ -7,6 +7,9 @@ const connection = require('./src/database')
 const app = express();
 const Place = require("./src/models/place.js")
 const User = require('./src/models/user')
+const validateToken = require('./src/middlewares/validateToken')
+
+
 
 app.use(express.json());//esta linha é obrigatória, pois ela que faz as trnsformações dos objetos para JSON.
 
@@ -15,7 +18,7 @@ connection.authenticate();
 connection.sync({alter: true}); //o camando alter faz com que as alterações feitas nos atributos sejam sincronizadas na hora com a tabela, não necessitando fazermos aqueles processos de de akter table
 
 
-app.post('/places', async (req,res) => {
+app.post('/places', validateToken, async (req,res) => {
     try {
         const data = {
             name: req.body.name,
@@ -36,7 +39,7 @@ app.post('/places', async (req,res) => {
     }
 })
 
-app.get('/places', async (req,res) => {
+app.get('/places', validateToken, async (req,res) => {
 
     try {
         const places = await Place.findAll();
@@ -48,7 +51,7 @@ app.get('/places', async (req,res) => {
 
 })
 
-app.put('/places/:id', async (req,res) => {
+app.put('/places/:id', validateToken, async (req,res) => {
 
     console.log(req.params.id);
     console.log(req.body);
@@ -80,7 +83,7 @@ app.put('/places/:id', async (req,res) => {
     }
 })
 
-app.delete('/places/:id', async (req,res) => {
+app.delete('/places/:id', validateToken, async (req,res) => {
 
     console.log(req.params)
 
