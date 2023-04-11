@@ -1,6 +1,9 @@
 const express = require('express');
-const connection = require('./src/database')
+const bcrypt = require('bcryptjs')
 const { Op, ValidationError } = require('sequelize')//importando operador OU do sequelize para verificar usuário existente ou não
+const jwt = require('jsonwebtoken')
+
+const connection = require('./src/database')
 const app = express();
 const Place = require("./src/models/place.js")
 const User = require('./src/models/user')
@@ -125,11 +128,13 @@ app.post('/users', async (req,res) => {
             .json({message: "Já existe um usuário com este email ou username"})
         }
 
+        const hash = await bcrypt.hash(req.body.password, 10)
+
         const newUser = {
             name: req.body.name,
             email: req.body.email,
             username: req.body.username,
-            password: req.body.password,
+            password: hash,
         }
 
         const user = await User.create(newUser);
@@ -141,7 +146,7 @@ app.post('/users', async (req,res) => {
     catch (error) {
         console.error(error)
         if(error instanceof ValidationError){
-            res.status(400).json({message: "A senha deve contar no mínimo 8 caracteres"})
+            res.status(400).json({message: "A senha deve conter no mínimo 8 caracteres"})
         }
         else {
         res.status(500).json({message: "Infelizmente algum erro aconteceu"})
@@ -149,6 +154,54 @@ app.post('/users', async (req,res) => {
     }
 })
 
+
+app.post('/sessions', async (req, res) => {
+
+    try {
+        
+        const { username, password} = req.body//desestruturando o body
+
+        const userInDatabase = await User.findOne({
+            where: { 
+                username
+            }
+        }
+            )
+
+        if(!userInDatabase){
+            return res.status(404).json({message: "Usuário não existe"})
+        }
+
+        const validPassword = await bcrypt.compare(req.body.password, userInDatabase.password);
+
+        if(!validPassword){
+            return res
+            .status(404)
+            .json({message: "Senha incorreta"})
+        }
+
+        const token = jwt.sign(
+            {
+                id: userInDatabase.id
+
+            },
+            "MINHA_CHAVE_SECRETA",
+
+            {
+                expiresIn:"1h"
+            }
+        )
+
+        res.json({user: userInDatabase, token: token})
+    
+
+
+    } catch (error) {
+        res.status(500).json({message: "Não foi possível processar sua solicitação"})
+        console.log(error)
+    }
+
+})
 
 app.listen(9999, () => {
     console.log("Servidor funcionando")
